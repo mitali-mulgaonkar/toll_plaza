@@ -72,6 +72,10 @@ class TollsController < ApplicationController
     else
       @toll = get_toll(type.to_i, wheels.to_i, axle.to_i)
     end
+
+    respond_to do |format|
+      format.js { render 'tolls/calculate'}
+    end
   end
 
   def get_toll(type, wheels, axle)
@@ -84,10 +88,10 @@ class TollsController < ApplicationController
       toll = 100
     elsif wheels == 4 && type == 1
       toll = 200
-    elsif wheels == 500
+    elsif wheels == 6
       toll = 500
     else axle >= 2
-    toll = 500 + (100 * axle)
+      toll = 500 + (100 * axle)
     end
     return toll
   end

@@ -1,7 +1,7 @@
-<%= form_tag(calculate_tolls_path, :method=>'post') do %>
+<%= form_tag(calculate_tolls_path, :method=>'post', :remote=> true) do %>
     <p>
       On Govt Duty:<br />
-      <%= select_tag("type", options_for_select([['No', '0'],['Yes', '1']])) %>
+      <%= select_tag("govt", options_for_select([['No', '0'],['Yes', '1']])) %>
     </p>
 
     <p>
@@ -16,7 +16,7 @@
 
     <p>
       Number of Wheels:<br />
-      <%= select_tag("type", options_for_select([['2'],['3'],['4'],[]])) %>
+      <%= select_tag("wheels", options_for_select([['2'],['3'],['4'],[6]])) %>
     </p>
 
     <p>
@@ -28,4 +28,6 @@
       <%= submit_tag 'Submit' %>
     </p>
 <% end %>
+
+<div id="amount"></div>
 
