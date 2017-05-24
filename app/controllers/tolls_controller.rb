@@ -61,6 +61,38 @@ class TollsController < ApplicationController
     end
   end
 
+  def calculate
+    vehicle_number = params[:number]
+    type = params[:type]
+    wheels = params[:wheels]
+    axle = params[:axle]
+
+    if vehicle_number.start_with?('MH')
+      @toll = "No toll"
+    else
+      @toll = get_toll(type.to_i, wheels.to_i, axle.to_i)
+    end
+  end
+
+  def get_toll(type, wheels, axle)
+    toll = 0
+    if wheels == 2
+      toll = 20
+    elsif wheels == 3
+      toll = 50
+    elsif wheels == 4 && type == 0
+      toll = 100
+    elsif wheels == 4 && type == 1
+      toll = 200
+    elsif wheels == 500
+      toll = 500
+    else axle >= 2
+    toll = 500 + (100 * axle)
+    end
+    return toll
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_toll

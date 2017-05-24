@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :tolls do
     collection do
-
+      post 'calculate' => 'tolls#calculate'
     end
   end
 
