@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  resources :tolls
+
+  resources :tolls do
+    collection do
+
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'tolls#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -42,7 +51,7 @@ Rails.application.routes.draw do
 
   # Example resource route with concerns:
   #   concern :toggleable do
-  #     post 'toggle'
+  #     post 'toggle't
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
