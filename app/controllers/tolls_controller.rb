@@ -68,12 +68,16 @@ class TollsController < ApplicationController
     wheels = params[:wheels]
     axle = params[:axle]
 
-    if vehicle_number.start_with?('MH') || govt.to_i == 1
-      @toll = 0
+    valid,msg = validate(vehicle_number,wheels.to_i,axle.to_i)
+    if valid
+      if vehicle_number.start_with?('MH') || govt.to_i == 1
+        @toll = 0
+      else
+        @toll = get_toll(type.to_i, wheels.to_i, axle.to_i)
+      end
     else
-      @toll = get_toll(type.to_i, wheels.to_i, axle.to_i)
+      @error = msg
     end
-
     respond_to do |format|
       format.js { render 'tolls/calculate'}
     end
@@ -81,7 +85,9 @@ class TollsController < ApplicationController
 
   def get_toll(type, wheels, axle)
     toll = 0
-    if wheels == 2
+    if axle >= 2
+      toll = 500 + (100 * axle)
+    elsif wheels == 2
       toll = 20
     elsif wheels == 3
       toll = 50
@@ -91,8 +97,6 @@ class TollsController < ApplicationController
       toll = 200
     elsif wheels == 6
       toll = 500
-    else axle >= 2
-      toll = 500 + (100 * axle)
     end
     return toll
   end
@@ -107,5 +111,20 @@ class TollsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def toll_params
       params.fetch(:toll, {})
+    end
+
+    def validate(vehicle_number,wheels,axle)
+      valid = true
+      msg = ""
+      if vehicle_number.blank? || !(/^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$/.match(vehicle_number))
+        valid = false
+        msg += "Please enter valid vehicle number. "
+      end
+
+      if wheels >=4 && (axle < 0 || axle > 20)
+        valid = false
+        msg += "Please enter valid axle number. "
+      end
+      return valid,msg
     end
 end

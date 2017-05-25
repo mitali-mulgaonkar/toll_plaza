@@ -1,4 +1,9 @@
-<%= form_tag(calculate_tolls_path, :method=>'post', :remote=> true) do %>
+<h4>Please Enter Registration Card Details</h4>
+
+<div id="result"></div>
+
+<%= form_tag(calculate_tolls_path, :method=>'post', :remote=> true, :id => "form") do %>
+
     <p>
       On Govt Duty:<br />
       <%= select_tag("govt", options_for_select([['No', '0'],['Yes', '1']])) %>
@@ -26,9 +31,6 @@
     </p>
 
     <p>
-      <%= submit_tag 'Submit' %>
+      <%= submit_tag 'Submit', :id => "submit" %>
     </p>
 <% end %>
-
-<div id="amount"></div>
-

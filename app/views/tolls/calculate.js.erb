@@ -1,1 +1,5 @@
-$("#amount").html('<div><p><%= "Please collect Rs  #{@toll}" %></p></div>');
+<% if @toll %>
+    $("#result").html('<div style="color:blue;"><p><%= "Please collect Rs  #{@toll}" %></p></div>');
+<% else %>
+    $("#result").html('<div style="color:red;"><p><%= @error %></p></div>');
+<% end %>
