@@ -62,13 +62,14 @@ class TollsController < ApplicationController
   end
 
   def calculate
+    govt = params[:govt]
     vehicle_number = params[:number]
     type = params[:type]
     wheels = params[:wheels]
     axle = params[:axle]
 
-    if vehicle_number.start_with?('MH')
-      @toll = "No toll"
+    if vehicle_number.start_with?('MH') || govt.to_i == 1
+      @toll = 0
     else
       @toll = get_toll(type.to_i, wheels.to_i, axle.to_i)
     end
