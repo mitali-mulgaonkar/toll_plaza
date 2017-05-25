@@ -11,17 +11,18 @@
 
     <p>
       Type: <br />
-      <%= select_tag("type", options_for_select([['Transport', '1'], ['Non Transport', '0']])) %>
+      <%= select_tag("type", options_for_select([['Non Transport', '0'],['Transport', '1']])) %>
     </p>
 
     <p>
       Number of Wheels:<br />
-      <%= select_tag("wheels", options_for_select([['2'],['3'],['4'],[6]])) %>
+      <%= select_tag("wheels", options_for_select([['2'],['3'],['4'],['6']])) %>
     </p>
 
-    <p>
+    <p class="axle" style="display: none;">
       Number of Axle:<br />
       <%= text_field_tag "axle" %>
+      <span id="errmsg"></span>
     </p>
 
     <p>

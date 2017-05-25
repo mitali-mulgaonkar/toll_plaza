@@ -11,6 +11,21 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+// require jquery_ujs
+// require turbolinks
+// require 'tolls.js'
+$(document).ready(function() {
+
+    //display number of axle only when number of wheels is greater than or equal to 4
+    $('#wheels').change(function () {
+        var wheels = $('#wheels').val();
+        if (wheels == "4" || wheels == "6") {
+            $('.axle').css('display', 'block');
+        }
+        else {
+            $('.axle').css('display', 'none');
+        }
+
+    });
+
+});
