@@ -57,7 +57,7 @@ class TollsController < ApplicationController
 
       if wheels >=4 && (axle < 0 || axle > 20)
         valid = false
-        msg += "Please enter valid axle number. "
+        msg += "Number of Axles cannot be greated than 20."
       end
       return valid,msg
     end
