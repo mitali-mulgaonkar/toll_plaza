@@ -11,11 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524081647) do
+ActiveRecord::Schema.define(version: 20170703104932) do
 
   create_table "tolls", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "password"
+  end
+
+  create_table "vehicles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "vehicle_number"
+    t.integer  "wheels"
+    t.integer  "axle"
+    t.boolean  "govt"
+    t.boolean  "vehicle_type"
   end
 
 end

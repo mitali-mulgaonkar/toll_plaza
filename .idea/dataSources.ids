@@ -3,4 +3,10 @@
   <data-source source="LOCAL" name="Rails toll_plaza: development" uuid="d5aa9441-9427-475b-94bd-2d20781a9a47">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails toll_plaza: production" uuid="213e81ab-d17a-4793-9de2-d43955edb921">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails toll_plaza: test" uuid="bd57193b-c108-4c18-81eb-ea20f5b51d3d">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
